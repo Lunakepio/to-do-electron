@@ -4,7 +4,7 @@ class TodoManager extends HTMLElement{
     $ui    = document.createElement("link")
     $list  = document.createElement("todo-list")
     $input = document.createElement("todo-input")
-
+    
     constructor(){
         super()
         // on initialise le shadowDOM

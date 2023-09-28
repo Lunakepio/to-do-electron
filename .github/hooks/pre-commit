@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+const { execSync } = require("child_process")
+
+try{
+  let branch = execSync("git rev-parse --abbrev-ref HEAD").toString().trim()
+
+  if (branch === "main" ){
+    console.log("can't push to main)")
+    process.exit(1)
+  }
+  process.exit(0)
+} catch(e){
+  console.error(e);
+  process.exit(1);
+}

@@ -3,6 +3,8 @@ class TodoList extends HTMLElement{
     // On creer les éléments
     $ui     = document.createElement("link")
     tasks   = []
+    localStorage = window.localStorage;
+
     
     constructor(){
         super()
@@ -66,8 +68,16 @@ class TodoList extends HTMLElement{
                 $task.$value.innerHTML = "Task " + i
             this.appendChild($task)
         }
-
+        if (this.localStorage.getItem("tasks")){
+            this.tasks = JSON.parse(this.localStorage.getItem("tasks"))
+            this.tasks.forEach(task => {
+                let $task = document.createElement("todo-task")
+                    $task.$value.innerHTML = task
+                this.appendChild($task)
+            })
+        }
     }
+
 
 }
 
